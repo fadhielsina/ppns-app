@@ -121,7 +121,7 @@
                             @foreach($post as $val)
                             <tr>
                                 <td>
-                                    <button class="btn btn-info btn-sm" type="submit"><span class="icofont icofont-ui-edit"></span></button>
+                                    <button type="button" class="btn-sm btn btn-info waves-effect" data-toggle="modal" data-target="#edit-data{{$val->id}}"><span class="icofont icofont-ui-edit"></span></button>
                                     {{ Form::open(['route' => ['data_ppns.destroy', $val->id], 'method' => 'delete']) }}
                                     <button class="btn btn-danger btn-sm" type="submit" onclick="return confirm('Anda Yakin?')"><span class="icofont icofont-ui-delete"></span></button>
                                     {{ Form::close() }}
@@ -140,6 +140,84 @@
                                 <td>{{$val->masa_berlaku}}</td>
                                 <td>{{$val->keterangan}}</td>
                             </tr>
+
+                            <div class="modal fade" id="edit-data{{$val->id}}" tabindex="-1" role="dialog">
+                                <div class="modal-dialog modal-lg" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">Form</h4>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        {{ Form::open(['route' => ['data_ppns.update', $val->id], 'method' => 'put']) }}
+                                        @csrf
+                                        <div class="modal-body">
+                                            <div class="form-group row">
+                                                <div class="col-sm-4">
+                                                    <label for="">Nama</label>
+                                                    <input type="text" class="form-control" value="{{$val->nama}}" id="nama" name="nama">
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <label for="">NIP</label>
+                                                    <input type="text" class="form-control" value="{{$val->nip}}" id="nip" name="nip">
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <label for="">Pangkat</label>
+                                                    <input type="text" class="form-control" value="{{$val->pangkat}}" id="pangkat" name="pangkat">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <div class="col-sm-4">
+                                                    <label for="">Bulan & Tahun</label>
+                                                    <input type="month" class="form-control" value="{{$val->bulan_tahun}}" id="bulan_tahun" name="bulan_tahun">
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <label for="">Status</label>
+                                                    <input type="text" class="form-control" value="{{$val->status}}" id="status" name="status">
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <label for="">Status Lantik</label>
+                                                    <input type="text" class="form-control" value="{{$val->status_lantik}}" id="status_lantik" name="status_lantik">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <div class="col-sm-4">
+                                                    <label for="">Instansi</label>
+                                                    <input type="text" class="form-control" value="{{$val->instansi}}" id="instansi" name="instansi">
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <label for="">Wilayah Kerja</label>
+                                                    <input type="text" class="form-control" value="{{$val->wilayah_kerja}}" id="wilayah_kerja" name="wilayah_kerja">
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <label for="">Jabatan</label>
+                                                    <input type="text" class="form-control" value="{{$val->jabatan}}" id="jabatan" name="jabatan">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <div class="col-sm-4">
+                                                    <label for="">No SK PPNS</label>
+                                                    <input type="text" class="form-control" value="{{$val->no_sk_ppns}}" id="no_sk_ppns" name="no_sk_ppns">
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <label for="">Masa Berlaku</label>
+                                                    <input type="text" class="form-control" value="{{$val->masa_berlaku}}" id="masa_berlaku" name="masa_berlaku">
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <label for="">Keterangan</label>
+                                                    <input type="text" class="form-control" value="{{$val->keterangan}}" id="keterangan" name="keterangan">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default waves-effect " data-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-primary waves-effect waves-light ">Save changes</button>
+                                        </div>
+                                        {{ Form::close() }}
+                                    </div>
+                                </div>
+                            </div>
                             @endforeach
                         </tbody>
                     </table>

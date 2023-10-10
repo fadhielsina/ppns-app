@@ -56,7 +56,10 @@ class DataPpnsController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $input = $request->all();
+        $input = $request->except(['_token', '_method']);
+        DataPpns::where('id', $id)->update($input);
+        return redirect('data_ppns')->with(['success' => 'Data Berhasil Dirubah!']);
     }
 
     /**
