@@ -25,6 +25,8 @@ Route::middleware(['guest'])->group(function () {
 Route::middleware(['auth'])->group(function () {
     Route::get('/admin', [AdminController::class, 'index'])->middleware('userAkses:admin');
     Route::resource('/data_ppns', DataPpnsController::class)->middleware('userAkses:admin');
+    Route::get('/data_ppns/edit/{id}', [DataPpnsController::class, 'edit'])->middleware('userAkses:admin');
+    Route::put('/data_ppns/update/{id}', [DataPpnsController::class, 'update'])->middleware('userAkses:admin');
 
     Route::get('/user', [UserController::class, 'index']);
     Route::get('/logout', [SesiController::class, 'logout']);
