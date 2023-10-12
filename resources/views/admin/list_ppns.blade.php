@@ -4,13 +4,11 @@
     <div class="col-sm-12">
         <!-- Zero config.table start -->
         @if (session('message'))
-        <div class="col-sm-12">
-            <div class="alert  alert-success alert-dismissible fade show" role="alert">
-                {{ session('message') }}
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
+        <div class="alert  alert-success alert-dismissible fade show" role="alert">
+            {{ session('message') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
         </div>
         @endif
         <div class="card">
@@ -121,10 +119,12 @@
                             @foreach($post as $val)
                             <tr>
                                 <td>
-                                    <button class="btn-sm btn btn-info waves-effect open_modal" value="{{$val->id}}"><span class="icofont icofont-ui-edit"></span></button>
-                                    {{ Form::open(['route' => ['data_ppns.destroy', $val->id], 'method' => 'delete']) }}
-                                    <button class="btn btn-danger btn-sm" type="submit" onclick="return confirm('Anda Yakin?')"><span class="icofont icofont-ui-delete"></span></button>
-                                    {{ Form::close() }}
+                                    <div class="button-container" style="display:flex;">
+                                        <button class="btn-sm btn btn-info open_modal" style="margin-right: 5px;" value="{{$val->id}}"><span class="icofont icofont-ui-edit"></span></button>
+                                        {{ Form::open(['route' => ['data_ppns.destroy', $val->id], 'method' => 'delete', 'style' => 'margin-bottom:0px']) }}
+                                        <button class="btn-sm btn btn-danger" type="submit" onclick="return confirm('Anda Yakin?')"><span class="icofont icofont-ui-delete"></span></button>
+                                        {{ Form::close() }}
+                                    </div>
                                 </td>
                                 <td>{{$val->nama}}</td>
                                 <td>{{$val->nip}}</td>

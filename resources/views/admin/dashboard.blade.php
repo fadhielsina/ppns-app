@@ -15,9 +15,6 @@
                     </div>
                 </div>
             </div>
-            <div class="card-footer">
-                <p class="text-white m-b-0"><i class="feather icon-clock text-white f-14 m-r-10"></i>update : 2:15 am</p>
-            </div>
         </div>
     </div>
     <div class="col-xl-3 col-md-6">
@@ -32,9 +29,6 @@
                         <canvas id="update-chart-2" height="50"></canvas>
                     </div>
                 </div>
-            </div>
-            <div class="card-footer">
-                <p class="text-white m-b-0"><i class="feather icon-clock text-white f-14 m-r-10"></i>update : 2:15 am</p>
             </div>
         </div>
     </div>
@@ -51,9 +45,6 @@
                     </div>
                 </div>
             </div>
-            <div class="card-footer">
-                <p class="text-white m-b-0"><i class="feather icon-clock text-white f-14 m-r-10"></i>update : 2:15 am</p>
-            </div>
         </div>
     </div>
     <div class="col-xl-3 col-md-6">
@@ -68,9 +59,6 @@
                         <canvas id="update-chart-4" height="50"></canvas>
                     </div>
                 </div>
-            </div>
-            <div class="card-footer">
-                <p class="text-white m-b-0"><i class="feather icon-clock text-white f-14 m-r-10"></i>update : 2:15 am</p>
             </div>
         </div>
     </div>
