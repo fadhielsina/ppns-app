@@ -12,7 +12,7 @@
                         <h4 class="m-b-0">{{ $data['jumlah_ppns'] }}</h4>
                     </div>
                     <div class="col col-auto text-right">
-                        <i class="feather icon-user f-50 text-c-yellow"></i>
+                        <i class="feather icon-book f-50 text-c-yellow"></i>
                     </div>
                 </div>
             </div>
@@ -27,7 +27,7 @@
                         <h4 class="m-b-0">$5,852</h4>
                     </div>
                     <div class="col col-auto text-right">
-                        <i class="feather icon-credit-card f-50 text-c-green"></i>
+                        <i class="feather icon-users f-50 text-c-green"></i>
                     </div>
                 </div>
             </div>
@@ -42,7 +42,7 @@
                         <h4 class="m-b-0">42</h4>
                     </div>
                     <div class="col col-auto text-right">
-                        <i class="feather icon-book f-50 text-c-pink"></i>
+                        <i class="feather icon-calendar f-50 text-c-pink"></i>
                     </div>
                 </div>
             </div>
@@ -57,7 +57,7 @@
                         <h4 class="m-b-0">$5,242</h4>
                     </div>
                     <div class="col col-auto text-right">
-                        <i class="feather icon-shopping-cart f-50 text-c-blue"></i>
+                        <i class="feather icon-globe f-50 text-c-blue"></i>
                     </div>
                 </div>
             </div>
