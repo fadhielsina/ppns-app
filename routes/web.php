@@ -1,9 +1,9 @@
 <?php
 
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\DataPpnsController;
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\DataPpnsController;
 use App\Http\Controllers\SesiController;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*

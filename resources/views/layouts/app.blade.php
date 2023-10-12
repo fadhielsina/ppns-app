@@ -328,7 +328,7 @@
                                 </li>
                                 <li class="">
                                     <a href="data_ppns">
-                                        <span class="pcoded-micon"><i class="feather icon-menu"></i></span>
+                                        <span class="pcoded-micon"><i class="feather icon-users"></i></span>
                                         <span class="pcoded-mtext">Data PPNS</span>
                                     </a>
                                 </li>
