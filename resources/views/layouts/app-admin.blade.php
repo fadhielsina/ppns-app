@@ -206,7 +206,6 @@
                     </div>
                 </div>
             </nav>
-
             <!-- Sidebar chat start -->
             <div id="sidebar" class="users p-chat-user showChat">
                 <div class="had-container">
@@ -325,6 +324,34 @@
                                         <span class="pcoded-micon"><i class="feather icon-home"></i></span>
                                         <span class="pcoded-mtext">Dashboard</span>
                                     </a>
+                                </li>
+                                <li class="pcoded-hasmenu ">
+                                    <a href="javascript:void(0)">
+                                        <span class="pcoded-micon"><i class="feather icon-sliders"></i></span>
+                                        <span class="pcoded-mtext">Master</span>
+                                    </a>
+                                    <ul class="pcoded-submenu">
+                                        <li class="">
+                                            <a href="error.htm">
+                                                <span class="pcoded-mtext">Master Pangkat</span>
+                                            </a>
+                                        </li>
+                                        <li class="">
+                                            <a href="comming-soon.htm">
+                                                <span class="pcoded-mtext">Master Instansi</span>
+                                            </a>
+                                        </li>
+                                        <li class="">
+                                            <a href="offline-ui.htm">
+                                                <span class="pcoded-mtext">Master Wilayah</span>
+                                            </a>
+                                        </li>
+                                        <li class="">
+                                            <a href="offline-ui.htm">
+                                                <span class="pcoded-mtext">Master Jabatan</span>
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </li>
                                 <li class="">
                                     <a href="data_ppns">

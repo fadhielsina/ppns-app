@@ -1,4 +1,4 @@
-@extends('layouts/app')
+@extends('layouts/app-admin')
 @section('konten')
 <div class="row">
     <div class="col-sm-12">
