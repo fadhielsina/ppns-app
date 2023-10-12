@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('master_jabatans', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_jabatan');
-            $table->string('kode_jabatan');
+            $table->string('nama');
+            $table->string('kode');
             $table->timestamps();
         });
     }

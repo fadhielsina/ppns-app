@@ -2,6 +2,10 @@
 
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\DataPpnsController;
+use App\Http\Controllers\Admin\MasterInstansiController;
+use App\Http\Controllers\Admin\MasterJabatanController;
+use App\Http\Controllers\Admin\MasterPangkatController;
+use App\Http\Controllers\Admin\MasterWilayahController;
 use App\Http\Controllers\SesiController;
 use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Route;
@@ -24,6 +28,23 @@ Route::middleware(['guest'])->group(function () {
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/admin', [AdminController::class, 'index'])->middleware('userAkses:admin');
+    // Master
+    Route::resource('/master_pangkat', MasterPangkatController::class)->middleware('userAkses:admin');
+    Route::get('/master_pangkat/edit/{id}', [MasterPangkatController::class, 'edit'])->middleware('userAkses:admin');
+    Route::put('/master_pangkat/update/{id}', [MasterPangkatController::class, 'update'])->middleware('userAkses:admin');
+
+    Route::resource('/master_instansi', MasterInstansiController::class)->middleware('userAkses:admin');
+    Route::get('/master_instansi/edit/{id}', [MasterInstansiController::class, 'edit'])->middleware('userAkses:admin');
+    Route::put('/master_instansi/update/{id}', [MasterInstansiController::class, 'update'])->middleware('userAkses:admin');
+
+    Route::resource('/master_wilayah', MasterWilayahController::class)->middleware('userAkses:admin');
+    Route::get('/master_wilayah/edit/{id}', [MasterWilayahController::class, 'edit'])->middleware('userAkses:admin');
+    Route::put('/master_wilayah/update/{id}', [MasterWilayahController::class, 'update'])->middleware('userAkses:admin');
+
+    Route::resource('/master_jabatan', MasterJabatanController::class)->middleware('userAkses:admin');
+    Route::get('/master_jabatan/edit/{id}', [MasterJabatanController::class, 'edit'])->middleware('userAkses:admin');
+    Route::put('/master_jabatan/update/{id}', [MasterJabatanController::class, 'update'])->middleware('userAkses:admin');
+
     Route::resource('/data_ppns', DataPpnsController::class)->middleware('userAkses:admin');
     Route::get('/data_ppns/edit/{id}', [DataPpnsController::class, 'edit'])->middleware('userAkses:admin');
     Route::put('/data_ppns/update/{id}', [DataPpnsController::class, 'update'])->middleware('userAkses:admin');

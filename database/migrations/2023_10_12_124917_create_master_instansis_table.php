@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('master_instansis', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_instansi');
-            $table->string('kode_instansi');
+            $table->string('nama');
+            $table->string('kode');
             $table->timestamps();
         });
     }

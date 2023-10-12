@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('master_pangkats', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_pangkat');
-            $table->string('kode_pangkat');
+            $table->string('nama');
+            $table->string('kode');
             $table->timestamps();
         });
     }

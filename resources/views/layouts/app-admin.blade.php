@@ -332,22 +332,22 @@
                                     </a>
                                     <ul class="pcoded-submenu">
                                         <li class="">
-                                            <a href="error.htm">
+                                            <a href="master_pangkat">
                                                 <span class="pcoded-mtext">Master Pangkat</span>
                                             </a>
                                         </li>
                                         <li class="">
-                                            <a href="comming-soon.htm">
+                                            <a href="master_instansi">
                                                 <span class="pcoded-mtext">Master Instansi</span>
                                             </a>
                                         </li>
                                         <li class="">
-                                            <a href="offline-ui.htm">
-                                                <span class="pcoded-mtext">Master Wilayah</span>
+                                            <a href="master_wilayah">
+                                                <span class="pcoded-mtext">Master Wilayah Kerja</span>
                                             </a>
                                         </li>
                                         <li class="">
-                                            <a href="offline-ui.htm">
+                                            <a href="master_jabatan">
                                                 <span class="pcoded-mtext">Master Jabatan</span>
                                             </a>
                                         </li>
