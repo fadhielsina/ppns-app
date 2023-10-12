@@ -23,7 +23,7 @@ class DataPpnsController extends Controller
      */
     public function create()
     {
-        //
+        dd('masuk');
     }
 
     /**

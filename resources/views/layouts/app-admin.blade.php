@@ -353,11 +353,23 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="">
-                                    <a href="data_ppns">
+                                <li class="pcoded-hasmenu ">
+                                    <a href="javascript:void(0)">
                                         <span class="pcoded-micon"><i class="feather icon-users"></i></span>
-                                        <span class="pcoded-mtext">Data PPNS</span>
+                                        <span class="pcoded-mtext">PPNS</span>
                                     </a>
+                                    <ul class="pcoded-submenu">
+                                        <li class="">
+                                            <a href="data_ppns">
+                                                <span class="pcoded-mtext">Daftar PPNS</span>
+                                            </a>
+                                        </li>
+                                        <li class="">
+                                            <a href="data_ppns/create">
+                                                <span class="pcoded-mtext">Tambah Data</span>
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </li>
                             </ul>
                         </div>

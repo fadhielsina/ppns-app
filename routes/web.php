@@ -30,19 +30,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin', [AdminController::class, 'index'])->middleware('userAkses:admin');
     // Master
     Route::resource('/master_pangkat', MasterPangkatController::class)->middleware('userAkses:admin');
-    Route::get('/master_pangkat/edit/{id}', [MasterPangkatController::class, 'edit'])->middleware('userAkses:admin');
     Route::put('/master_pangkat/update/{id}', [MasterPangkatController::class, 'update'])->middleware('userAkses:admin');
-
     Route::resource('/master_instansi', MasterInstansiController::class)->middleware('userAkses:admin');
-    Route::get('/master_instansi/edit/{id}', [MasterInstansiController::class, 'edit'])->middleware('userAkses:admin');
     Route::put('/master_instansi/update/{id}', [MasterInstansiController::class, 'update'])->middleware('userAkses:admin');
-
     Route::resource('/master_wilayah', MasterWilayahController::class)->middleware('userAkses:admin');
-    Route::get('/master_wilayah/edit/{id}', [MasterWilayahController::class, 'edit'])->middleware('userAkses:admin');
     Route::put('/master_wilayah/update/{id}', [MasterWilayahController::class, 'update'])->middleware('userAkses:admin');
-
     Route::resource('/master_jabatan', MasterJabatanController::class)->middleware('userAkses:admin');
-    Route::get('/master_jabatan/edit/{id}', [MasterJabatanController::class, 'edit'])->middleware('userAkses:admin');
     Route::put('/master_jabatan/update/{id}', [MasterJabatanController::class, 'update'])->middleware('userAkses:admin');
 
     Route::resource('/data_ppns', DataPpnsController::class)->middleware('userAkses:admin');

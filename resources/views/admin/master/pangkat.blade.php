@@ -122,7 +122,7 @@
         var id = $(this).val();
         //fetch detail post with ajax
         $.ajax({
-            url: `master_pangkat/edit/${id}`,
+            url: `master_pangkat/${id}/edit`,
             type: "GET",
             cache: false,
             success: function(response) {
