@@ -194,7 +194,7 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="logout">
+                                            <a href="{{url('logout')}}">
                                                 <i class="feather icon-log-out"></i> Logout
                                             </a>
                                         </li>
@@ -319,53 +319,53 @@
                         <div class="pcoded-inner-navbar main-menu">
                             <div class="pcoded-navigatio-lavel">Navigation</div>
                             <ul class="pcoded-item pcoded-left-item">
-                                <li class="">
-                                    <a href="admin">
+                                <li class="{{ (request()->is('admin')) ? 'active' : '' }}">
+                                    <a href="{{url('admin')}}">
                                         <span class="pcoded-micon"><i class="feather icon-home"></i></span>
                                         <span class="pcoded-mtext">Dashboard</span>
                                     </a>
                                 </li>
-                                <li class="pcoded-hasmenu ">
+                                <li class="pcoded-hasmenu {{ (request()->is('master_pangkat')||request()->is('master_instansi')||request()->is('master_wilayah')||request()->is('master_jabatan')) ? 'active pcoded-trigger' : '' }}">
                                     <a href="javascript:void(0)">
                                         <span class="pcoded-micon"><i class="feather icon-sliders"></i></span>
                                         <span class="pcoded-mtext">Master</span>
                                     </a>
                                     <ul class="pcoded-submenu">
-                                        <li class="">
-                                            <a href="master_pangkat">
+                                        <li class="{{ (request()->is('master_pangkat')) ? 'active' : '' }}">
+                                            <a href="{{url('master_pangkat')}}">
                                                 <span class="pcoded-mtext">Master Pangkat</span>
                                             </a>
                                         </li>
-                                        <li class="">
-                                            <a href="master_instansi">
+                                        <li class="{{ (request()->is('master_instansi')) ? 'active' : '' }}">
+                                            <a href="{{url('master_instansi')}}">
                                                 <span class="pcoded-mtext">Master Instansi</span>
                                             </a>
                                         </li>
-                                        <li class="">
-                                            <a href="master_wilayah">
+                                        <li class="{{ (request()->is('master_wilayah')) ? 'active' : '' }}">
+                                            <a href="{{url('master_wilayah')}}">
                                                 <span class="pcoded-mtext">Master Wilayah Kerja</span>
                                             </a>
                                         </li>
-                                        <li class="">
-                                            <a href="master_jabatan">
+                                        <li class="{{ (request()->is('master_jabatan')) ? 'active' : '' }}">
+                                            <a href="{{url('master_jabatan')}}">
                                                 <span class="pcoded-mtext">Master Jabatan</span>
                                             </a>
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="pcoded-hasmenu ">
+                                <li class="pcoded-hasmenu {{ (request()->is('data_ppns')||request()->is('data_ppns/create')) ? 'active pcoded-trigger' : '' }}">
                                     <a href="javascript:void(0)">
                                         <span class="pcoded-micon"><i class="feather icon-users"></i></span>
                                         <span class="pcoded-mtext">PPNS</span>
                                     </a>
                                     <ul class="pcoded-submenu">
-                                        <li class="">
-                                            <a href="data_ppns">
+                                        <li class="{{ (request()->is('data_ppns')) ? 'active' : '' }}">
+                                            <a href="{{url('data_ppns')}}">
                                                 <span class="pcoded-mtext">Daftar PPNS</span>
                                             </a>
                                         </li>
-                                        <li class="">
-                                            <a href="data_ppns/create">
+                                        <li class="{{ (request()->is('data_ppns/create')) ? 'active' : '' }}">
+                                            <a href="{{url('data_ppns/create')}}">
                                                 <span class="pcoded-mtext">Tambah Data</span>
                                             </a>
                                         </li>
@@ -381,6 +381,25 @@
                                 <div class="page-wrapper">
                                     <!-- Page-body start -->
                                     <div class="page-body">
+                                        @if ($errors->any())
+                                        <div class="alert  alert-danger alert-dismissible fade show" role="alert">
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                            @foreach ($errors->all() as $error)
+                                            {{ $error }}
+                                            <br>
+                                            @endforeach
+                                        </div>
+                                        @endif
+                                        @if (session('message'))
+                                        <div class="alert  alert-success alert-dismissible fade show" role="alert">
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                            {{ session('message') }}
+                                        </div>
+                                        @endif
                                         @yield('konten')
                                     </div>
                                     <!-- Page-body end -->
@@ -429,18 +448,6 @@
     <script src="..\files\assets\js\vartical-layout.min.js"></script>
     <script src="..\files\assets\js\jquery.mCustomScrollbar.concat.min.js"></script>
     <script type="text/javascript" src="..\files\assets\js\script.js"></script>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-
-        gtag('config', 'UA-23581568-13');
-    </script>
 </body>
 
 </html>

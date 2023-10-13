@@ -27,25 +27,23 @@ Route::middleware(['guest'])->group(function () {
 });
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/admin', [AdminController::class, 'index'])->middleware('userAkses:admin');
-    // Master
-    Route::resource('/master_pangkat', MasterPangkatController::class)->middleware('userAkses:admin');
-    Route::put('/master_pangkat/update/{id}', [MasterPangkatController::class, 'update'])->middleware('userAkses:admin');
-    Route::resource('/master_instansi', MasterInstansiController::class)->middleware('userAkses:admin');
-    Route::put('/master_instansi/update/{id}', [MasterInstansiController::class, 'update'])->middleware('userAkses:admin');
-    Route::resource('/master_wilayah', MasterWilayahController::class)->middleware('userAkses:admin');
-    Route::put('/master_wilayah/update/{id}', [MasterWilayahController::class, 'update'])->middleware('userAkses:admin');
-    Route::resource('/master_jabatan', MasterJabatanController::class)->middleware('userAkses:admin');
-    Route::put('/master_jabatan/update/{id}', [MasterJabatanController::class, 'update'])->middleware('userAkses:admin');
-
-    Route::resource('/data_ppns', DataPpnsController::class)->middleware('userAkses:admin');
-    Route::get('/data_ppns/edit/{id}', [DataPpnsController::class, 'edit'])->middleware('userAkses:admin');
-    Route::put('/data_ppns/update/{id}', [DataPpnsController::class, 'update'])->middleware('userAkses:admin');
-
+    // Admin Only
+    Route::middleware(['userAkses:admin'])->group(function () {
+        Route::get('/admin', [AdminController::class, 'index']);
+        // Master
+        Route::resource('/master_pangkat', MasterPangkatController::class);
+        Route::put('/master_pangkat/update/{id}', [MasterPangkatController::class, 'update']);
+        Route::resource('/master_instansi', MasterInstansiController::class);
+        Route::put('/master_instansi/update/{id}', [MasterInstansiController::class, 'update']);
+        Route::resource('/master_wilayah', MasterWilayahController::class);
+        Route::put('/master_wilayah/update/{id}', [MasterWilayahController::class, 'update']);
+        Route::resource('/master_jabatan', MasterJabatanController::class);
+        Route::put('/master_jabatan/update/{id}', [MasterJabatanController::class, 'update']);
+        // Data PPNS
+        Route::resource('/data_ppns', DataPpnsController::class);
+        Route::get('/data_ppns/edit/{id}', [DataPpnsController::class, 'edit']);
+        Route::put('/data_ppns/update/{id}', [DataPpnsController::class, 'update']);
+    });
     Route::get('/user', [UserController::class, 'index']);
     Route::get('/logout', [SesiController::class, 'logout']);
-});
-
-Route::get('/home', function () {
-    return redirect('/admin');
 });

@@ -3,19 +3,11 @@
 <div class="row">
     <div class="col-sm-12">
         <!-- Zero config.table start -->
-        @if (session('message'))
-        <div class="alert  alert-success alert-dismissible fade show" role="alert">
-            {{ session('message') }}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        @endif
         <div class="card">
             <div class="card-header">
                 <h5>Data PPNS</h5>
                 <!-- Modal Add-->
-                <button type="button" class="btn-sm btn btn-primary waves-effect" data-toggle="modal" data-target="#large-Modal">Add</button>
+                <!-- <button type="button" class="btn-sm btn btn-primary waves-effect" data-toggle="modal" data-target="#large-Modal">Add</button>
                 <div class="modal fade" id="large-Modal" tabindex="-1" role="dialog">
                     <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content">
@@ -92,7 +84,7 @@
                             {{ Form::close() }}
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
             <div class="card-block">
                 <div class="dt-responsive table-responsive">
@@ -110,7 +102,7 @@
                                 <th>Instansi</th>
                                 <th>Wilayah Kerja</th>
                                 <th>Jabatan</th>
-                                <th>No SK PPNS</th>
+                                <th>No Skep PPNS</th>
                                 <th>Masa Berlaku</th>
                                 <th>Keterangan</th>
                             </tr>
@@ -128,15 +120,15 @@
                                 </td>
                                 <td>{{$val->nama}}</td>
                                 <td>{{$val->nip}}</td>
-                                <td>{{$val->pangkat}}</td>
+                                <td>{{$val->pangkat->nama}}</td>
                                 <td>{{date('F', strtotime($val->bulan_tahun))}}</td>
                                 <td>{{date('Y', strtotime($val->bulan_tahun))}}</td>
                                 <td>{{$val->status}}</td>
                                 <td>{{$val->status_lantik}}</td>
-                                <td>{{$val->instansi}}</td>
-                                <td>{{$val->wilayah_kerja}}</td>
-                                <td>{{$val->jabatan}}</td>
-                                <td>{{$val->no_sk_ppns}}</td>
+                                <td>{{$val->instansi->nama}}</td>
+                                <td>{{$val->wilayah->nama}}</td>
+                                <td>{{$val->jabatan->nama}}</td>
+                                <td>{{$val->no_skep_ppns}}</td>
                                 <td>{{$val->masa_berlaku}}</td>
                                 <td>{{$val->keterangan}}</td>
                             </tr>

@@ -1,7 +1,6 @@
 @extends('layouts/app-admin')
 @section('konten')
 <div class="row">
-
     <!-- statustic-card start -->
     <div class="col-xl-3 col-md-6">
         <div class="card bg-c-yellow text-white">
@@ -65,5 +64,4 @@
     </div>
     <!-- statustic-card start -->
 </div>
-
 @endsection
