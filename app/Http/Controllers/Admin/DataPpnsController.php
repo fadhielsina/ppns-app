@@ -33,7 +33,7 @@ class DataPpnsController extends Controller
         $master['instansi'] = MasterInstansi::all();
         $master['wilayah'] = MasterWilayah::all();
         $master['jabatan'] = MasterJabatan::all();
-        return view('register', compact('master'));
+        return view('admin/register', compact('master'));
     }
 
     /**
