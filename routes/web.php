@@ -21,6 +21,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/home', function () {
+    return redirect('/user');
+});
+
 Route::middleware(['guest'])->group(function () {
     Route::get('/', [SesiController::class, 'index'])->name('login');
     Route::post('/', [SesiController::class, 'login']);
