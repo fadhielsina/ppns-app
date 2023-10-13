@@ -31,7 +31,7 @@
                 <label>Pangkat</label>
                 <select name="pangkat_id" id="pangkat_id" class="form-control">
                     @foreach($master['pangkat'] as $val)
-                    <option value="{{$val->id}}">{{$val->nama}}</option>
+                    <option value="{{$val->id}}" {{ (collect(old('pangkat_id'))->contains($val->id)) ? 'selected':'' }}>{{$val->nama}}</option>
                     @endforeach
                 </select>
             </div>
@@ -58,7 +58,7 @@
                 <label>Instansi</label>
                 <select name="instansi_id" id="instansi_id" class="form-control">
                     @foreach($master['instansi'] as $val)
-                    <option value="{{$val->id}}">{{$val->nama}}</option>
+                    <option value="{{$val->id}}" {{ (collect(old('instansi_id'))->contains($val->id)) ? 'selected':'' }}>{{$val->nama}}</option>
                     @endforeach
                 </select>
             </div>
@@ -66,7 +66,7 @@
                 <label>Wilayah Kerja</label>
                 <select name="wilayah_id" id="wilayah_id" class="form-control">
                     @foreach($master['wilayah'] as $val)
-                    <option value="{{$val->id}}">{{$val->nama}}</option>
+                    <option value="{{$val->id}}" {{ (collect(old('wilayah_id'))->contains($val->id)) ? 'selected':'' }}>{{$val->nama}}</option>
                     @endforeach
                 </select>
             </div>
@@ -74,7 +74,7 @@
                 <label>Jabatan</label>
                 <select name="jabatan_id" id="jabatan_id" class="form-control">
                     @foreach($master['jabatan'] as $val)
-                    <option value="{{$val->id}}">{{$val->nama}}</option>
+                    <option value="{{$val->id}}" {{ (collect(old('jabatan_id'))->contains($val->id)) ? 'selected':'' }}>{{$val->nama}}</option>
                     @endforeach
                 </select>
             </div>
