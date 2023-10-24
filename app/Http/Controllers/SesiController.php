@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DataPpns;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -42,5 +43,23 @@ class SesiController extends Controller
     {
         Auth::logout();
         return redirect('/');
+    }
+
+    public function check_user()
+    {
+        return view('check_user');
+    }
+
+    public function check_user_submit(Request $request)
+    {
+        $request->validate([
+            'nip' => 'required',
+        ]);
+        $user = DataPpns::where('nip', $request->nip)->first();
+        if ($user) :
+            return redirect('check_user')->withErrors('Hallo ' . $user->nama . '');
+        else :
+            return redirect('check_user')->withErrors('User Tidak Terdaftar');
+        endif;
     }
 }

@@ -25,9 +25,12 @@ Route::get('/home', function () {
     return redirect('/user');
 });
 
+
 Route::middleware(['guest'])->group(function () {
     Route::get('/', [SesiController::class, 'index'])->name('login');
     Route::post('/', [SesiController::class, 'login']);
+    Route::get('/check_user', [SesiController::class, 'check_user']);
+    Route::post('/check_user', [SesiController::class, 'check_user_submit']);
 });
 
 Route::middleware(['auth'])->group(function () {

@@ -77,7 +77,7 @@
                 <div class="col-sm-12">
                     <!-- Authentication card start -->
 
-                    <form class="md-float-material form-material" action="" method="POST">
+                    <form class="md-float-material form-material" action="{{url('check_user')}}" method="POST">
                         @csrf
                         <div class="text-center">
                             <img src="{{url('')}}\files\assets\images\logo.png" alt="logo.png">
@@ -86,41 +86,34 @@
                             <div class="card-block">
                                 <div class="row m-b-20">
                                     <div class="col-md-12">
-                                        <h3 class="text-center">Sign In</h3>
+                                        <h3 class="text-center">Check User</h3>
                                         @if($errors->any())
-                                        <div class="alert alert-danger">
+                                        <div class="alert alert-info">
                                             @foreach($errors->all() as $item)
-                                            <li>{{$item}}</li>
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <i class="icofont icofont-close-line-circled"></i>
+                                            </button>
+                                            <strong>{{$item}}</strong>
                                             @endforeach
                                         </div>
                                         @endif
                                     </div>
                                 </div>
                                 <div class="form-group form-primary">
-                                    <input type="text" name="email" autofocus class="form-control" value="{{old('email')}}" placeholder="Your Email Address">
-                                    <span class="form-bar"></span>
-                                </div>
-                                <div class="form-group form-primary">
-                                    <input type="password" name="password" class="form-control" placeholder="Password">
+                                    <input type="text" name="nip" autofocus class="form-control" value="{{old('nip')}}" placeholder="Masuikan NIP">
                                     <span class="form-bar"></span>
                                 </div>
                                 <div class="row m-t-25 text-left">
                                     <div class="col-12">
-                                        <!-- <div class="checkbox-fade fade-in-primary d-">
-                                            <label>
-                                                <input type="checkbox" value="">
-                                                <span class="cr"><i class="cr-icon icofont icofont-ui-check txt-primary"></i></span>
-                                                <span class="text-inverse">Remember me</span>
-                                            </label>
-                                        </div> -->
-                                        <div class="forgot-phone text-right f-right">
-                                            <a href="{{url('check_user')}}" class="text-right f-w-600"> Cek Data PPNS >></a>
+                                        <div class="checkbox-fade fade-in-primary d-">
+                                            <a href="{{url('/')}}" class="text-right f-w-600">
+                                                << Login</a>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row m-t-30">
                                     <div class="col-md-12">
-                                        <button type="submit" class="btn btn-primary btn-md btn-block waves-effect waves-light text-center m-b-20">Sign in</button>
+                                        <button type="submit" class="btn btn-primary btn-md btn-block waves-effect waves-light text-center m-b-20">submit</button>
                                     </div>
                                 </div>
                             </div>
@@ -134,49 +127,7 @@
         </div>
         <!-- end of container-fluid -->
     </section>
-    <!-- Warning Section Starts -->
-    <!-- Older IE warning message -->
-    <!--[if lt IE 10]>
-<div class="ie-warning">
-    <h1>Warning!!</h1>
-    <p>You are using an outdated version of Internet Explorer, please upgrade <br/>to any of the following web browsers to access this website.</p>
-    <div class="iew-container">
-        <ul class="iew-download">
-            <li>
-                <a href="http://www.google.com/chrome/">
-                    <img src="../files/assets/images/browser/chrome.png" alt="Chrome">
-                    <div>Chrome</div>
-                </a>
-            </li>
-            <li>
-                <a href="https://www.mozilla.org/en-US/firefox/new/">
-                    <img src="../files/assets/images/browser/firefox.png" alt="Firefox">
-                    <div>Firefox</div>
-                </a>
-            </li>
-            <li>
-                <a href="http://www.opera.com">
-                    <img src="../files/assets/images/browser/opera.png" alt="Opera">
-                    <div>Opera</div>
-                </a>
-            </li>
-            <li>
-                <a href="https://www.apple.com/safari/">
-                    <img src="../files/assets/images/browser/safari.png" alt="Safari">
-                    <div>Safari</div>
-                </a>
-            </li>
-            <li>
-                <a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie">
-                    <img src="../files/assets/images/browser/ie.png" alt="">
-                    <div>IE (9 & above)</div>
-                </a>
-            </li>
-        </ul>
-    </div>
-    <p>Sorry for the inconvenience!</p>
-</div>
-<![endif]-->
+
     <!-- Warning Section Ends -->
     <!-- Required Jquery -->
     <script type="text/javascript" src="{{url('')}}\files\bower_components\jquery\js\jquery.min.js"></script>
