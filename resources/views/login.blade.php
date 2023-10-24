@@ -18,6 +18,8 @@
     <meta name="author" content="#">
     <!-- Favicon icon -->
     <link rel="icon" href="{{url('')}}\files\assets\images\favicon.ico" type="image/x-icon">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" type="text/css" href="{{url('')}}\files\assets\icon\font-awesome\css\font-awesome.min.css">
     <!-- Google font-->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,800" rel="stylesheet">
     <!-- Required Fremwork -->
@@ -114,7 +116,7 @@
                                             </label>
                                         </div> -->
                                         <div class="forgot-phone text-right f-right">
-                                            <a href="{{url('check_user')}}" class="text-right f-w-600"> Cek Data PPNS >></a>
+                                            <a href="{{url('check_user')}}" class="text-right f-w-600"> Cek Data PPNS <i class="fa fa-angle-double-right"></i></a>
                                         </div>
                                     </div>
                                 </div>

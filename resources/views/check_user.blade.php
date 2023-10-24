@@ -18,6 +18,8 @@
     <meta name="author" content="#">
     <!-- Favicon icon -->
     <link rel="icon" href="{{url('')}}\files\assets\images\favicon.ico" type="image/x-icon">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" type="text/css" href="{{url('')}}\files\assets\icon\font-awesome\css\font-awesome.min.css">
     <!-- Google font-->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,800" rel="stylesheet">
     <!-- Required Fremwork -->
@@ -107,7 +109,7 @@
                                     <div class="col-12">
                                         <div class="checkbox-fade fade-in-primary d-">
                                             <a href="{{url('/')}}" class="text-right f-w-600">
-                                                << Login</a>
+                                                <i class="fa fa-angle-double-left"></i> Login</a>
                                         </div>
                                     </div>
                                 </div>
