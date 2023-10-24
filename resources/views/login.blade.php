@@ -116,7 +116,7 @@
                                             </label>
                                         </div> -->
                                         <div class="forgot-phone text-right f-right">
-                                            <a href="{{url('check_user')}}" class="text-right f-w-600"> Cek Data PPNS <i class="fa fa-angle-double-right"></i></a>
+                                            <a href="{{url('check_user')}}" class="text-right f-w-600"> Cek Data PPNS <i class="fa fa-angle-double-right fa-lg"></i></a>
                                         </div>
                                     </div>
                                 </div>

@@ -109,7 +109,7 @@
                                     <div class="col-12">
                                         <div class="checkbox-fade fade-in-primary d-">
                                             <a href="{{url('/')}}" class="text-right f-w-600">
-                                                <i class="fa fa-angle-double-left"></i> Login</a>
+                                                <i class="fa fa-angle-double-left fa-lg"></i> Login</a>
                                         </div>
                                     </div>
                                 </div>
