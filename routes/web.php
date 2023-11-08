@@ -50,6 +50,7 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('/data_ppns', DataPpnsController::class);
         Route::get('/data_ppns/edit/{id}', [DataPpnsController::class, 'edit']);
         Route::put('/data_ppns/update/{id}', [DataPpnsController::class, 'update']);
+        Route::get('/data_ppns/filterWilayah/{id}', [DataPpnsController::class, 'perWilayah']);
     });
     Route::get('/user', [UserController::class, 'index']);
     Route::get('/logout', [SesiController::class, 'logout']);

@@ -23,7 +23,7 @@
                 <div class="row align-items-center">
                     <div class="col">
                         <p class="m-b-5">PPNS Aktif</p>
-                        <h4 class="m-b-0">$5,852</h4>
+                        <h4 class="m-b-0">5,852</h4>
                     </div>
                     <div class="col col-auto text-right">
                         <i class="feather icon-users f-50 text-c-green"></i>
@@ -53,7 +53,7 @@
                 <div class="row align-items-center">
                     <div class="col">
                         <p class="m-b-5">PPNS Area Seluruh Area</p>
-                        <h4 class="m-b-0">$5,242</h4>
+                        <h4 class="m-b-0">5,242</h4>
                     </div>
                     <div class="col col-auto text-right">
                         <i class="feather icon-globe f-50 text-c-blue"></i>

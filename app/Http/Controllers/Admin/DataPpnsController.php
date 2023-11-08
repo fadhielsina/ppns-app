@@ -21,7 +21,11 @@ class DataPpnsController extends Controller
     public function index()
     {
         $post = DataPpns::all();
-        return view('admin/list_ppns', compact('post'));
+        $master['pangkat'] = MasterPangkat::all();
+        $master['instansi'] = MasterInstansi::all();
+        $master['wilayah'] = MasterWilayah::all();
+        $master['jabatan'] = MasterJabatan::all();
+        return view('admin/list_ppns', compact('post', 'master'));
     }
 
     /**
@@ -128,5 +132,16 @@ class DataPpnsController extends Controller
     {
         DataPpns::where('id', $id)->delete();
         return redirect('data_ppns')->with(['message' => 'Data Berhasil Dihapus!']);
+    }
+
+    public function perWilayah(string $id)
+    {
+        $post = DataPpns::where('wilayah_id', $id)
+            ->with('pangkat')->with('wilayah')->with('instansi')->with('jabatan')
+            ->get();
+        return response()->json([
+            'success' => true,
+            'data'    => $post
+        ]);
     }
 }

@@ -6,88 +6,19 @@
         <div class="card">
             <div class="card-header">
                 <h5>Data PPNS</h5>
-                <!-- Modal Add-->
-                <!-- <button type="button" class="btn-sm btn btn-primary waves-effect" data-toggle="modal" data-target="#large-Modal">Add</button>
-                <div class="modal fade" id="large-Modal" tabindex="-1" role="dialog">
-                    <div class="modal-dialog modal-lg" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h4 class="modal-title">Form</h4>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            {{ Form::open(['route' => ['data_ppns.store'], 'method' => 'post']) }}
-                            @csrf
-                            <div class="modal-body">
-                                <div class="form-group row">
-                                    <div class="col-sm-4">
-                                        <label for="">Nama</label>
-                                        <input type="text" class="form-control" id="nama" name="nama">
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <label for="">NIP</label>
-                                        <input type="text" class="form-control" id="nip" name="nip">
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <label for="">Pangkat</label>
-                                        <input type="text" class="form-control" id="pangkat" name="pangkat">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-sm-4">
-                                        <label for="">Bulan & Tahun</label>
-                                        <input type="month" class="form-control" id="bulan_tahun" name="bulan_tahun">
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <label for="">Status</label>
-                                        <input type="text" class="form-control" id="status" name="status">
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <label for="">Status Lantik</label>
-                                        <input type="text" class="form-control" id="status_lantik" name="status_lantik">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-sm-4">
-                                        <label for="">Instansi</label>
-                                        <input type="text" class="form-control" id="instansi" name="instansi">
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <label for="">Wilayah Kerja</label>
-                                        <input type="text" class="form-control" id="wilayah_kerja" name="wilayah_kerja">
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <label for="">Jabatan</label>
-                                        <input type="text" class="form-control" id="jabatan" name="jabatan">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-sm-4">
-                                        <label for="">No SK PPNS</label>
-                                        <input type="text" class="form-control" id="no_sk_ppns" name="no_sk_ppns">
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <label for="">Masa Berlaku</label>
-                                        <input type="text" class="form-control" id="masa_berlaku" name="masa_berlaku">
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <label for="">Keterangan</label>
-                                        <input type="text" class="form-control" id="keterangan" name="keterangan">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default waves-effect " data-dismiss="modal">Close</button>
-                                <button type="submit" class="btn btn-primary waves-effect waves-light ">Save changes</button>
-                            </div>
-                            {{ Form::close() }}
-                        </div>
-                    </div>
-                </div> -->
             </div>
             <div class="card-block">
-                <div class="dt-responsive table-responsive">
+                <div class="row mb-3 float-right">
+                    <div class="col">
+                        <select name="wilayah_id" id="wilayah_id" class="form-control">
+                            <option selected disabled>-- Pilih Wilayah --</option>
+                            @foreach($master['wilayah'] as $val)
+                            <option value="{{$val->id}}" {{ (collect(old('wilayah_id'))->contains($val->id)) ? 'selected':'' }}>{{$val->nama}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="dt-responsive table-responsive mt-3">
                     <table id="simpletable" class="table table-striped table-bordered nowrap">
                         <thead>
                             <tr>
@@ -107,7 +38,7 @@
                                 <th>Keterangan</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="data_ppns_table">
                             @foreach($post as $val)
                             <tr>
                                 <td>
@@ -164,7 +95,11 @@
                         </div>
                         <div class="col-sm-4">
                             <label for="">Pangkat</label>
-                            <input type="text" class="form-control" id="edit_pangkat" name="edit_pangkat">
+                            <select name="edit_pangkat" id="edit_pangkat" class="form-control">
+                                @foreach($master['pangkat'] as $val)
+                                <option value="{{$val->id}}">{{$val->nama}}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -174,7 +109,10 @@
                         </div>
                         <div class="col-sm-4">
                             <label for="">Status</label>
-                            <input type="text" class="form-control" id="edit_status" name="edit_status">
+                            <select name="edit_status" id="edit_status" class="form-control">
+                                <option value="diterima">Diterima</option>
+                                <option value="ditolak">Ditolak</option>
+                            </select>
                         </div>
                         <div class="col-sm-4">
                             <label for="">Status Lantik</label>
@@ -184,21 +122,33 @@
                     <div class="form-group row">
                         <div class="col-sm-4">
                             <label for="">Instansi</label>
-                            <input type="text" class="form-control" id="edit_instansi" name="edit_instansi">
+                            <select name="edit_instansi" id="edit_instansi" class="form-control">
+                                @foreach($master['instansi'] as $val)
+                                <option value="{{$val->id}}">{{$val->nama}}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="col-sm-4">
                             <label for="">Wilayah Kerja</label>
-                            <input type="text" class="form-control" id="edit_wilayah_kerja" name="edit_wilayah_kerja">
+                            <select name="edit_wilayah_kerja" id="edit_wilayah_kerja" class="form-control">
+                                @foreach($master['wilayah'] as $val)
+                                <option value="{{$val->id}}">{{$val->nama}}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="col-sm-4">
                             <label for="">Jabatan</label>
-                            <input type="text" class="form-control" id="edit_jabatan" name="edit_jabatan">
+                            <select name="edit_jabatan" id="edit_jabatan" class="form-control">
+                                @foreach($master['jabatan'] as $val)
+                                <option value="{{$val->id}}">{{$val->nama}}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-4">
-                            <label for="">No SK PPNS</label>
-                            <input type="text" class="form-control" id="edit_no_sk_ppns" name="edit_no_sk_ppns">
+                            <label for="">No SKEP PPNS</label>
+                            <input type="text" class="form-control" id="edit_no_skep_ppns" name="edit_no_skep_ppns">
                         </div>
                         <div class="col-sm-4">
                             <label for="">Masa Berlaku</label>
@@ -236,14 +186,14 @@
                 $('#edit_id').val(id);
                 $('#edit_nama').val(response.data.nama);
                 $('#edit_nip').val(response.data.nip);
-                $('#edit_pangkat').val(response.data.pangkat);
+                $('#edit_pangkat').val(response.data.pangkat_id);
                 $('#edit_bulan_tahun').val(response.data.bulan_tahun);
                 $('#edit_status').val(response.data.status);
                 $('#edit_status_lantik').val(response.data.status_lantik);
-                $('#edit_instansi').val(response.data.instansi);
-                $('#edit_wilayah_kerja').val(response.data.wilayah_kerja);
-                $('#edit_jabatan').val(response.data.jabatan);
-                $('#edit_no_sk_ppns').val(response.data.no_sk_ppns);
+                $('#edit_instansi').val(response.data.instansi_id);
+                $('#edit_wilayah_kerja').val(response.data.wilayah_id);
+                $('#edit_jabatan').val(response.data.jabatan_id);
+                $('#edit_no_skep_ppns').val(response.data.no_skep_ppns);
                 $('#edit_masa_berlaku').val(response.data.masa_berlaku);
                 $('#edit_keterangan').val(response.data.keterangan);
 
@@ -258,14 +208,14 @@
         let id = $('#edit_id').val();
         let nama = $('#edit_nama').val();
         let nip = $('#edit_nip').val();
-        let pangkat = $('#edit_pangkat').val();
+        let pangkat_id = $('#edit_pangkat').val();
         let bulan_tahun = $('#edit_bulan_tahun').val();
         let status = $('#edit_status').val();
         let status_lantik = $('#edit_status_lantik').val();
-        let instansi = $('#edit_instansi').val();
-        let wilayah_kerja = $('#edit_wilayah_kerja').val();
-        let jabatan = $('#edit_jabatan').val();
-        let no_sk_ppns = $('#edit_no_sk_ppns').val();
+        let instansi_id = $('#edit_instansi').val();
+        let wilayah_id = $('#edit_wilayah_kerja').val();
+        let jabatan_id = $('#edit_jabatan').val();
+        let no_skep_ppns = $('#edit_no_skep_ppns').val();
         let masa_berlaku = $('#edit_masa_berlaku').val();
         let keterangan = $('#edit_keterangan').val();
         let token = $('#token').val();
@@ -277,20 +227,43 @@
             data: {
                 "nama": nama,
                 "nip": nip,
-                "pangkat": pangkat,
+                "pangkat_id": pangkat_id,
                 "bulan_tahun": bulan_tahun,
                 "status": status,
                 "status_lantik": status_lantik,
-                "instansi": instansi,
-                "wilayah_kerja": wilayah_kerja,
-                "jabatan": jabatan,
-                "no_sk_ppns": no_sk_ppns,
+                "instansi_id": instansi_id,
+                "wilayah_id": wilayah_id,
+                "jabatan_id": jabatan_id,
+                "no_skep_ppns": no_skep_ppns,
                 "masa_berlaku": masa_berlaku,
                 "keterangan": keterangan,
                 "_token": token
             },
             success: function(response) {
                 location.replace('/data_ppns');
+            }
+        });
+
+    });
+</script>
+
+<!-- Filter Data -->
+<script>
+    $(document).on('change', "#wilayah_id", function() {
+        var id = $("#wilayah_id option:selected").val();
+
+        $.ajax({
+            url: `data_ppns/filterWilayah/${id}`,
+            type: "GET",
+            cache: false,
+            success: function(response) {
+                // Show Data
+                $.each(response.data, function(key, value) {
+                    console.log(value.wilayah.nama);
+                    console.log(value.pangkat.nama);
+                    console.log(value.instansi.nama);
+                    console.log(value.jabatan.nama);
+                });
             }
         });
 
