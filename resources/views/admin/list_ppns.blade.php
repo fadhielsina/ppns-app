@@ -38,15 +38,13 @@
                                 <th>Keterangan</th>
                             </tr>
                         </thead>
-                        <tbody id="data_ppns_table">
+                        <tbody>
                             @foreach($post as $val)
                             <tr>
                                 <td>
                                     <div class="button-container" style="display:flex;">
                                         <button class="btn-sm btn btn-info open_modal" style="margin-right: 5px;" value="{{$val->id}}"><span class="icofont icofont-ui-edit"></span></button>
-                                        {{ Form::open(['route' => ['data_ppns.destroy', $val->id], 'method' => 'delete', 'style' => 'margin-bottom:0px']) }}
-                                        <button class="btn-sm btn btn-danger" type="submit" onclick="return confirm('Anda Yakin?')"><span class="icofont icofont-ui-delete"></span></button>
-                                        {{ Form::close() }}
+                                        <button class="btn-sm btn btn-danger" id="delete_ppns" value="{{$val->id}}" type="submit"><span class="icofont icofont-ui-delete"></span></button>
                                     </div>
                                 </td>
                                 <td>{{$val->nama}}</td>
@@ -172,7 +170,8 @@
 </div>
 
 @endsection
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<!-- Edit Button -->
 <script>
     $(document).on('click', '.open_modal', function() {
         var id = $(this).val();
@@ -247,10 +246,34 @@
     });
 </script>
 
+<!-- Delete Button -->
+<script>
+    $(document).on('click', '#delete_ppns', function() {
+        // function
+        if (!confirm('Are you sure?')) return false;
+        var id = $(this).val();
+        var token = "{{ csrf_token() }}";
+        $.ajax({
+            url: `data_ppns/${id}`,
+            type: 'DELETE',
+            data: {
+                "id": id,
+                "_token": token,
+            },
+            success: function(response) {
+                window.location.href = "data_ppns";
+            }
+        })
+    })
+</script>
+
 <!-- Filter Data -->
 <script>
     $(document).on('change', "#wilayah_id", function() {
         var id = $("#wilayah_id option:selected").val();
+
+        var myTable = $('#simpletable').DataTable();
+        myTable.clear().draw();
 
         $.ajax({
             url: `data_ppns/filterWilayah/${id}`,
@@ -259,10 +282,24 @@
             success: function(response) {
                 // Show Data
                 $.each(response.data, function(key, value) {
-                    console.log(value.wilayah.nama);
-                    console.log(value.pangkat.nama);
-                    console.log(value.instansi.nama);
-                    console.log(value.jabatan.nama);
+                    myTable.row
+                        .add([
+                            '<div class="button-container" style="display:flex;"><button class="btn-sm btn btn-info open_modal" style="margin-right: 5px;" value="' + value.id + '"><span class="icofont icofont-ui-edit"></span></button><button class="btn-sm btn btn-danger" value="' + value.id + '" id="delete_ppns" type="submit"><span class="icofont icofont-ui-delete"></span></button></div>',
+                            value.nama,
+                            value.nip,
+                            value.pangkat.nama,
+                            $.datepicker.formatDate('MM', new Date(value.bulan_tahun)),
+                            $.datepicker.formatDate('yy', new Date(value.bulan_tahun)),
+                            value.status,
+                            value.status_lantik,
+                            value.instansi.nama,
+                            value.wilayah.nama,
+                            value.jabatan.nama,
+                            value.no_skep_ppns,
+                            value.masa_berlaku,
+                            value.keterangan
+                        ])
+                        .draw(false);
                 });
             }
         });

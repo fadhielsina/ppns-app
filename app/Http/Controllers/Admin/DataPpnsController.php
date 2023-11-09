@@ -131,7 +131,12 @@ class DataPpnsController extends Controller
     public function destroy(string $id)
     {
         DataPpns::where('id', $id)->delete();
-        return redirect('data_ppns')->with(['message' => 'Data Berhasil Dihapus!']);
+        Session::flash('message', 'Data Berhasil Dihapus!');
+        return response()->json([
+            'success' => true,
+            'data'    => $id
+        ]);
+        // return redirect('data_ppns')->with(['message' => 'Data Berhasil Dihapus!']);
     }
 
     public function perWilayah(string $id)
